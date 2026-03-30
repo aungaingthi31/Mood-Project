@@ -74,7 +74,10 @@ def main(page: ft.Page):
             content_area.content = records_view(page, go)
 
         # rebuild nav ให้ active ทำงาน
-        layout.controls[1] = build_nav()
+        if route == "/":
+            layout.controls[1] = ft.Container()  # ❌ ซ่อน nav
+        else:
+            layout.controls[1] = build_nav()     # ✅ แสดง nav
 
         page.update()
 
